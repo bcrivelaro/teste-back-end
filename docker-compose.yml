@@ -38,7 +38,7 @@ services:
     volumes:
       - ./contacts:/contacts
     ports:
-      - "3001:3001"
+      - "3001:3000"
     environment:
       - DB_HOST=postgres
       - DB_USERNAME=postgres
