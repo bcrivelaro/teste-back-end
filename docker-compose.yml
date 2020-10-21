@@ -1,0 +1,25 @@
+version: "3"
+services:
+  mongo:
+    image: tutum/mongodb:3.2
+    restart: always
+    environment:
+      - AUTH=no
+    ports:
+      - "27017:27017"
+      - "27018:27017"
+    volumes:
+      - ./mongodata:/data/db
+  visits:
+    build:
+      context: ./visits
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ./visits:/visits
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    stdin_open: true
+    tty: true

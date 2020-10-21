@@ -1,0 +1,16 @@
+development:
+  clients:
+    default:
+      database: visits_development
+      hosts:
+        - mongo:27017
+test:
+  clients:
+    default:
+      database: visits_test
+      hosts:
+        - mongo:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1

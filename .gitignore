@@ -1,0 +1,4 @@
+mongodata
+coverage
+/tmp/*
+/log/*
