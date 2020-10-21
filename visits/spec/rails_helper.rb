@@ -28,6 +28,7 @@ RSpec.configure do |config|
   # Remove this line to enable support for ActiveRecord
   config.use_active_record = false
 
+  config.include FactoryBot::Syntax::Methods
   config.include Mongoid::Matchers, type: :model
 
   # If you enable ActiveRecord support you should unncomment these lines,
