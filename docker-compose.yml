@@ -1,13 +1,13 @@
 version: "3"
 services:
   mongo:
-    image: mongo:4.4.1
+    image: tutum/mongodb:3.2
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: MongoDB2020!
+      - AUTH=no
     ports:
       - "27017:27017"
+      - "27018:27017"
     volumes:
       - ./mongodata:/data/db
   visits:
