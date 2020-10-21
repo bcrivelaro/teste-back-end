@@ -38,14 +38,8 @@ RSpec.describe V1::VisitsController, type: :request do
     context 'invalid params' do
       it 'does not create a visit' do
         expect do
-          post v1_visits_path, params: {
-            visit: {
-              guid: '1',
-              url: 'localhost:3000',
-              accessed_at: DateTime.now.iso8601
-            }
-          }
-        end.to change { Visit.count }.by(1)
+          post v1_visits_path, params: { visit: { guid: '1' } }
+        end.to change { Visit.count }.by(0)
       end
 
       it 'does return 422' do
