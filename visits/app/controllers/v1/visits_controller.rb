@@ -1,8 +1,8 @@
 class V1::VisitsController < ApplicationController
   def index
-    @visits = Visit.all
+    @visits = Visit.page(params[:page])
 
-    render json: @visits
+    paginate json: @visits
   end
 
   def create
