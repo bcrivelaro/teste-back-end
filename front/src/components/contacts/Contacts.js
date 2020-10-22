@@ -9,19 +9,9 @@ const Contacts = () => {
 
   useEffect(() => {
     contactContext.searchContacts();
+    // eslint-disable-next-line
   }, []);
 
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // } else {
-  //   return (
-  //     <table>
-  //       {contacts.map((contact) => (
-  //         <Contact contact={contact} key={uuid()} />
-  //       ))}
-  //     </table>
-  //   );
-  // }
   if (loading) {
     return (
       <div>
@@ -35,12 +25,16 @@ const Contacts = () => {
         <h1>Contacts</h1>
         <table className='table'>
           <thead className='thead-dark'>
-            <th>Email</th>
-            <th>Name</th>
+            <tr>
+              <th>Email</th>
+              <th>Name</th>
+            </tr>
           </thead>
-          {contacts.map((contact) => (
-            <Contact contact={contact} key={uuid()} />
-          ))}
+          <tbody>
+            {contacts.map((contact) => (
+              <Contact contact={contact} key={uuid()} />
+            ))}
+          </tbody>
         </table>
       </div>
     );
