@@ -1,8 +1,8 @@
 class V1::ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
+    @contacts = Contact.page(params[:page])
 
-    render json: @contacts
+    paginate json: @contacts
   end
 
   def create
