@@ -15,7 +15,10 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'sidekiq/testing'
+
 SimpleCov.start 'rails'
+Sidekiq::Testing.fake!
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
