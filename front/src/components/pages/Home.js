@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Visits from '../visits/Visits';
 
 const Home = () => (
   <Fragment>
