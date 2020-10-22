@@ -10,7 +10,7 @@ RSpec.describe V1::ContactsController, type: :request do
 
   describe 'POST #create' do
     context 'valid params' do
-      it 'does create a contact' do
+      it 'does enqueue a job to CreateContactWorker' do
         expect do
           post v1_contacts_path, params: {
             contact: {
@@ -18,7 +18,7 @@ RSpec.describe V1::ContactsController, type: :request do
               name: 'John Doe'
             }
           }
-        end.to change { Contact.count }.by(1)
+        end.to change(CreateContactWorker.jobs, :size).by(1)
       end
 
       it 'does return 201' do
@@ -29,16 +29,16 @@ RSpec.describe V1::ContactsController, type: :request do
           }
         }
 
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(202)
       end
     end
 
     context 'invalid params' do
-      it 'does not create a contact' do
+      it 'does not enqueue a job to CreateContactWorker' do
         expect do
           post v1_contacts_path, params: { contact: { name: 'John Doe' } }
 
-        end.to change { Contact.count }.by(0)
+        end.to change(CreateContactWorker.jobs, :size).by(0)
       end
 
       it 'does return 422' do

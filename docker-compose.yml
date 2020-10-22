@@ -43,10 +43,25 @@ services:
       - DB_HOST=postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=pg_password
+      - REDIS_URL=redis://redis:6379/0
     depends_on:
       - postgres
     stdin_open: true
     tty: true
+  redis:
+    image: redis:6.0.8-alpine
+  contacts_worker:
+    build:
+      context: ./contacts
+      dockerfile: Dockerfile
+    command: bundle exec sidekiq
+    volumes:
+      - ./contacts:/contacts
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
   kong:
     image: kong:2.1.4-alpine
     restart: always
