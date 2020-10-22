@@ -64,10 +64,10 @@ formRequestControl = function () {
       url: serverUrl,
       data: data,
       success: function (response) {
-        handleElementsAfterPost();
+        handleElementsAfterSuccessPost();
       },
       error: function (response) {
-        handleElementsAfterPost();
+        handleElementsAfterFailedPost();
       },
     });
   }
@@ -78,10 +78,23 @@ formRequestControl = function () {
     $button.html('Enviando...');
   }
 
-  function handleElementsAfterPost() {
-    $('#notice').show();
+  function handleElementsAfterSuccessPost() {
+    $('#notice-success').show();
     setTimeout(function () {
-      $('#notice').fadeOut();
+      $('#notice-success').fadeOut();
+    }, 3000);
+
+    $button.html('Enviar');
+    $button.removeClass('disabled');
+    $button.attr('disabled', false);
+    $email.val('');
+    $name.val('');
+  }
+
+  function handleElementsAfterFailedPost() {
+    $('#notice-failure').show();
+    setTimeout(function () {
+      $('#notice-failure').fadeOut();
     }, 3000);
 
     $button.html('Enviar');
