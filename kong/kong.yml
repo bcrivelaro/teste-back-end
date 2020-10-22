@@ -1,0 +1,30 @@
+_format_version: "2.1"
+_transform: true
+
+upstreams:
+  - name: visits-upstream
+    targets:
+      - target: visits:3000
+  - name: contacts-upstream
+    targets:
+      - target: contacts:3000
+
+services:
+  - name: visits-service
+    host: visits-upstream
+    protocol: http
+    routes:
+      - name: visits-routes
+        paths: ["/v1/visits"]
+        methods: ["GET", "POST"]
+        strip_path: false
+        protocols: ["http"]
+  - name: contacts-service
+    host: contacts-upstream
+    protocol: http
+    routes:
+      - name: contacts-routes
+        paths: ["/v1/contacts"]
+        methods: ["GET", "POST"]
+        strip_path: false
+        protocols: ["http"]
