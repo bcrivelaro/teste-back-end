@@ -47,3 +47,24 @@ services:
       - postgres
     stdin_open: true
     tty: true
+  kong:
+    image: kong:2.1.4-alpine
+    restart: always
+    volumes:
+      - ./kong:/usr/local/kong/declarative
+    ports:
+      - "8001:8001"
+      - "8000:8000"
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/usr/local/kong/declarative/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://kong:8001"]
+      interval: 5s
+      timeout: 2s
+      retries: 15
