@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Website</title>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="accessTracker.js"></script>
+    <script src="contactForm.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Contato</h1>
+
+      <p>
+        Duis placerat ligula non nibh porttitor scelerisque. Mauris volutpat
+        ante lacus, vel vestibulum massa auctor eget. Integer lobortis gravida
+        lectus, in venenatis purus sollicitudin sed. Sed scelerisque nibh nulla.
+        Aenean ac nulla ac dolor vulputate egestas interdum non dui. Sed sit
+        amet accumsan nisi, vel auctor urna. Vestibulum faucibus non ex ut
+        rutrum. Nunc non semper erat. Pellentesque quis dapibus quam. Sed
+        dignissim eu lectus a fringilla. Donec pulvinar arcu quis malesuada
+        euismod. Proin ultrices vehicula dui, sit amet convallis libero faucibus
+        nec.
+      </p>
+
+      <div id="contact-form-wrapper">
+        <form id="contact-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" id="name" class="form-control" />
+          </div>
+
+          <button type="button" class="btn btn-success" id="send-form-btn">
+            Enviar
+          </button>
+          <div id="notice" style="display: none">Contato enviado!</div>
+        </form>
+      </div>
+
+      <br />
+
+      <a href="index.html" class="btn btn-success" role="button">Principal</a>
+      <a href="about.html" class="btn btn-success" role="button">Sobre</a>
+    </div>
+  </body>
+</html>

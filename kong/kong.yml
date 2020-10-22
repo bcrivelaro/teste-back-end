@@ -16,7 +16,7 @@ services:
     routes:
       - name: visits-routes
         paths: ["/v1/visits"]
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST", "OPTIONS"]
         strip_path: false
         protocols: ["http"]
   - name: contacts-service
@@ -25,6 +25,6 @@ services:
     routes:
       - name: contacts-routes
         paths: ["/v1/contacts"]
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST", "OPTIONS"]
         strip_path: false
         protocols: ["http"]

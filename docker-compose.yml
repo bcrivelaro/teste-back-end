@@ -68,3 +68,11 @@ services:
       interval: 5s
       timeout: 2s
       retries: 15
+  example_website:
+    build:
+      context: ./example_website
+      dockerfile: Dockerfile
+    volumes:
+      - ./example_website:/usr/share/nginx/html
+    ports:
+      - "3002:80"
