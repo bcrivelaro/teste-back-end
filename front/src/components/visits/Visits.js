@@ -9,6 +9,7 @@ const Visits = () => {
 
   useEffect(() => {
     visitContext.searchVisits();
+    // eslint-disable-next-line
   }, []);
 
   if (loading) {
@@ -24,13 +25,17 @@ const Visits = () => {
         <h1>Visits</h1>
         <table className='table'>
           <thead className='thead-dark'>
-            <th>GUID</th>
-            <th>URL</th>
-            <th>Acessed at</th>
+            <tr>
+              <th>GUID</th>
+              <th>URL</th>
+              <th>Acessed at</th>
+            </tr>
           </thead>
-          {visits.map((visit) => (
-            <Visit visit={visit} key={uuid()} />
-          ))}
+          <tbody>
+            {visits.map((visit) => (
+              <Visit visit={visit} key={uuid()} />
+            ))}
+          </tbody>
         </table>
       </div>
     );
