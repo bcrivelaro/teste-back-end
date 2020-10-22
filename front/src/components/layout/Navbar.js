@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <Link to='/' className='navbar-brand'>
         Home
       </Link>
 
-      <div class='navbar-collapse'>
-        <ul class='navbar-nav mr-auto'>
-          <li class='nav-item active'>
+      <div className='navbar-collapse'>
+        <ul className='navbar-nav mr-auto'>
+          <li className='nav-item active'>
             <Link to='/visits' className='nav-link'>
               Visits
             </Link>
           </li>
-          <li class='nav-item'>
+          <li className='nav-item'>
             <Link to='/contacts' className='nav-link'>
               Contacts
             </Link>
