@@ -6,6 +6,7 @@ export default (state, action) => {
       return {
         ...state,
         visits: action.payload,
+        lastPage: action.lastPage,
         loading: false,
       };
     case SET_LOADING:

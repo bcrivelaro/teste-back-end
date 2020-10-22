@@ -1,16 +1,30 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import Contact from './Contact';
 import ContactContext from '../../context/contacts/contactContext';
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { loading, contacts } = contactContext;
+  const { loading, contacts, lastPage } = contactContext;
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    contactContext.searchContacts();
+    contactContext.searchContacts(currentPage);
     // eslint-disable-next-line
   }, []);
+
+  const handleNextPage = () => {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+    contactContext.searchContacts(newPage);
+  };
+
+  const handleBackPage = () => {
+    const newPage = currentPage - 1;
+    setCurrentPage(newPage);
+    contactContext.searchContacts(newPage);
+  };
 
   if (loading) {
     return (
@@ -36,6 +50,26 @@ const Contacts = () => {
             ))}
           </tbody>
         </table>
+        <div className='btn-group' role='group' aria-label='Basic example'>
+          {currentPage > 1 && (
+            <button
+              type='button'
+              className='btn btn-secondary'
+              onClick={handleBackPage}
+            >
+              Back
+            </button>
+          )}
+          {!lastPage && (
+            <button
+              type='button'
+              className='btn btn-secondary'
+              onClick={handleNextPage}
+            >
+              Next
+            </button>
+          )}
+        </div>
       </div>
     );
   }

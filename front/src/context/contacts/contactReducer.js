@@ -6,6 +6,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: action.payload,
+        lastPage: action.lastPage,
         loading: false,
       };
     case SET_LOADING:

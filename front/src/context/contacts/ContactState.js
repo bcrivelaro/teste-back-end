@@ -8,18 +8,22 @@ const ContactState = (props) => {
   const intialState = {
     contacts: [],
     loading: false,
+    lastPage: false,
   };
 
   const [state, dispatch] = useReducer(ContactReducer, intialState);
 
-  const searchContacts = async () => {
+  const searchContacts = async (page = 1) => {
     dispatch({ type: SET_LOADING });
 
-    const res = await axios.get('http://localhost:8000/v1/contacts');
+    const res = await axios.get(
+      `http://localhost:8000/v1/contacts?page=${page}`
+    );
 
     dispatch({
       type: GET_CONTACTS,
       payload: res.data,
+      lastPage: !res?.headers?.['link']?.includes('next'),
     });
   };
 
@@ -28,6 +32,7 @@ const ContactState = (props) => {
       value={{
         contacts: state.contacts,
         loading: state.loading,
+        lastPage: state.lastPage,
         searchContacts,
       }}
     >
