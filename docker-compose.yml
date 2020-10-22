@@ -5,9 +5,9 @@ services:
     restart: always
     environment:
       - AUTH=no
-    ports:
-      - "27017:27017"
-      - "27018:27017"
+    # ports:
+    #   - "27017:27017"
+    #   - "27018:27017"
     volumes:
       - ./mongodata:/data/db
   visits:
@@ -17,8 +17,8 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./visits:/visits
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     depends_on:
       - mongo
     stdin_open: true
@@ -37,8 +37,8 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./contacts:/contacts
-    ports:
-      - "3001:3000"
+    # ports:
+    #   - "3001:3000"
     environment:
       - DB_HOST=postgres
       - DB_USERNAME=postgres
@@ -68,7 +68,7 @@ services:
     volumes:
       - ./kong:/usr/local/kong/declarative
     ports:
-      - "8001:8001"
+      # - "8001:8001"
       - "8000:8000"
     environment:
       - KONG_DATABASE=off
@@ -90,7 +90,7 @@ services:
     volumes:
       - ./example_website:/usr/share/nginx/html
     ports:
-      - "3002:80"
+      - "3001:80"
   front:
     build:
       context: ./front
@@ -99,5 +99,5 @@ services:
       - /app/node_modules
       - ./front:/front
     ports:
-      - "3003:3000"
+      - "3000:3000"
     stdin_open: true
