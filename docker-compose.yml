@@ -76,3 +76,13 @@ services:
       - ./example_website:/usr/share/nginx/html
     ports:
       - "3002:80"
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./front:/front
+    ports:
+      - "3003:3000"
+    stdin_open: true
