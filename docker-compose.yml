@@ -96,7 +96,7 @@ services:
       context: ./front
       dockerfile: Dockerfile
     volumes:
-      - /app/node_modules
+      - /front/node_modules
       - ./front:/front
     ports:
       - "3003:3000"
